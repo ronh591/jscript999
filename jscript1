@@ -1,0 +1,28 @@
+function replaceAndAddBit(originalString) {
+  // Check if the input is the target string
+  if (originalString !== "11111111") {
+    return originalString; // Return the original string if not the target
+  }
+
+  // Replace the target string with "10101010"
+  const replacedString = "10101010";
+
+  // Convert the replaced string to an array of characters
+  const charArray = replacedString.split("");
+
+  // Add a "1" to the end of the array (adding a bit)
+  charArray.push("1");
+
+  // Join the character array back into a string
+  const newString = charArray.join("");
+
+  return newString;
+}
+
+// Example usage
+const originalString = "11111111";
+const modifiedString = replaceAndAddBit(originalString);
+
+console.log("Original String:", originalString);
+console.log("Modified String:", modifiedString);
+

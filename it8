@@ -1,0 +1,24 @@
+function findSubstrings(originalString, targetSubstring, substringLength) {
+  const results = [];
+  let startIndex = 0;
+
+  while ((startIndex = originalString.indexOf(targetSubstring, startIndex)) !== -1) {
+    // Check if enough characters remain for the substring
+    if (startIndex + substringLength <= originalString.length) {
+      const substring = originalString.substring(startIndex, startIndex + substringLength);
+      results.push(substring);
+    }
+    startIndex++; // Move the starting index to avoid getting stuck on the same "oi23"
+  }
+
+  return results;
+}
+
+// Example usage
+const originalString = "2oi4u23oiu4o23iu4oi23u4oi23u4oiu4oi23u4oi23u4oi23u4oi32u4oi";
+const targetSubstring = "oi23";
+const desiredLength = 5;
+
+const foundSubstrings = findSubstrings(originalString, targetSubstring, desiredLength);
+
+console.log(foundSubstrings); // This will print an array of the found substrings

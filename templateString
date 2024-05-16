@@ -1,0 +1,8 @@
+const name = "Alice";
+const age = 30;
+
+// Regular string with concatenation
+const greeting = "Hello, " + name + "! You are " + age + " years old.";
+
+// Template string with embedded expressions
+const templateGreeting = `Hello, ${name}! You are ${age} years old.`;

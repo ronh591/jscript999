@@ -1,0 +1,3 @@
+let text = "The rain in SPAIN mainly contains plain strains";
+const myArr = text.match("ain");
+console.log(myArr.length); // This will print 3 (multiple matches)

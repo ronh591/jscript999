@@ -1,0 +1,29 @@
+ function memory_representation(number) {
+  """
+  Simulates the concept of floating-point representation in memory.
+
+  This function does not access actual memory locations but demonstrates the concept.
+  """
+  sign_bit = 0 if number >= 0 else 1  # Simulate sign bit
+  exponent = None  # Placeholder for exponent bits
+  mantissa = None  # Placeholder for mantissa bits
+
+  # This is a simplified example. Actual floating-point representation can vary.
+  if number != 0:
+    # Simulate calculating exponent and mantissa based on the number's magnitude
+    exponent = ...
+    mantissa = ...
+
+  return {
+      "sign_bit": sign_bit,
+      "exponent": exponent,
+      "mantissa": mantissa
+  }
+
+// Example usage
+number = 2.22233344455566
+memory_info = memory_representation(number)
+
+console.log("Sign bit:", memory_info["sign_bit"]);
+console.log("Exponent:", memory_info["exponent"]);  // This would be filled with actual value in a real scenario
+console.log("Mantissa:", memory_info["mantissa"]);  // This would be filled with actual value in a real scenario

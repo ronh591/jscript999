@@ -1,0 +1,9 @@
+const russianText = "И весьма рано, в первый день недели, приходят ко гробу, при восходе солнца, 3и говорят между собою: кто отвалит нам камень от двери гроба?";
+
+const headerHTML = `
+  <h3 style="font-family: 'New York Times', serif; font-size: 25px;">${russianText}</h3>
+`;
+
+// Assuming you have an element with ID "container" to insert the HTML
+const container = document.getElementById('container');
+container.innerHTML = headerHTML;

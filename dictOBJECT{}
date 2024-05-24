@@ -1,0 +1,10 @@
+const person = {
+  name: "Alice",
+  age: 30,
+  city: "New York"
+};
+
+// Accessing properties using named indexes (keys)
+console.log(person.name); // Output: "Alice"
+console.log(person.age);  // Output: 30
+console.log(person.city); // Output: "New York"

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Arrays</h1>
+<h2>Nested JavaScript Objects and Arrays.</h2>
+
+<p id="demo"></p>
+
+<script>
+let x = "";
+const myObj = {
+  name: "John",
+  age: 30,
+  cars: [
+    { name: "Ford", models: ["Fiesta", "Focus", "Mustang"] },
+    { name: "BMW", models: ["320", "X3", "X5"] },
+    { name: "Fiat", models: ["500", "Panda"] },
+  ],
+};
+
+// Loop through car brands
+for (const car of myObj.cars) {
+  x += "<h2>" + car.name + "</h2>";
+
+  // Loop through models for the current car
+  for (const model of car.models) {
+    x += model + "<br>";
+  }
+}
+
+document.getElementById("demo").innerHTML = x;
+</script>
+
+</body>
+</html>

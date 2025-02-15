@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html style="background-color: black;">
+<head>
+    <title>Simple Quiz</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: silver; /* Added this line */
+        }
+
+        #quiz-container {
+            width: 600px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+        }
+
+        /* Set white to quiz container to see black & gold */
+        #question-counter {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #question-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .answer-button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #aaa;
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .answer-button:hover {
+            background-color: #ddd;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #final-message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body style="color: red;">
+    <h1 style="font-weight: bold; text-align: center;">jQuery Testing Studio</h1>
+
+    <div id="quiz-container">
+        <div id="question-counter">Question: <span id="current-question">1</span> / <span
+                id="total-questions"></span></div>
+        <div id="question-text"></div>
+        <div id="answers"></div>
+        <div id="feedback"></div>
+        <div id="final-message"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Quiz Data (Example)
+            const questions = [
+                {
+                    question: "What is the capital of France?",
+                    answers: ["London", "Paris", "Berlin", "Rome"],
+                    correctAnswer: "Paris"
+                },
+                {
+                    question: "What is 2 + 2?",
+                    answers: ["3", "4", "5", "6"],
+                    correctAnswer: "4"
+                },
+                {
+                    question: "What is the largest planet in our solar system?",
+                    answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+                    correctAnswer: "Jupiter"
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let attempts = 0; // Keep track of attempts per question
+
+            // Function to display a question
+            function displayQuestion() {
+                const questionData = questions[currentQuestionIndex];
+                $("#question-text").text(questionData.question);
+
+                $("#answers").empty(); // Clear previous answers
+
+                for (let i = 0; i < questionData.answers.length; i++) { // Loop structure
+                    const answerText = questionData.answers[i];
+                    const button = $("<button>", {
+                        text: answerText,
+                        class: "answer-button",
+                        click: function() {
+                            checkAnswer(answerText);
+                        }
+                    });
+                    $("#answers").append(button);
+                }
+
+                $("#current-question").text(currentQuestionIndex + 1);
+                $("#total-questions").text(questions.length);
+
+                $("#feedback").text(""); // Clear feedback
+                attempts = 0; // Reset attempts for new question
+            }
+
+
+            // Function to check the answer
+            function checkAnswer(selectedAnswer) {
+                const questionData = questions[currentQuestionIndex];
+
+                if (selectedAnswer === questionData.correctAnswer) { // Conditional
+                    score++;
+                    $("#feedback").text("Correct!");
+                    console.log("Current Score:", score); // Display score in console
+                    setTimeout(nextQuestion, 1000); // Delay before next question
+                } else {
+                    attempts++;
+                    $("#feedback").text("Incorrect.  Try again.");
+                }
+            }
+
+            // Function to move to the next question
+            function nextQuestion() {
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    displayQuestion();
+                } else {
+                    // Quiz is over
+                    $("#question-counter").hide();
+                    $("#question-text").hide();
+                    $("#answers").hide();
+                    $("#feedback").hide();
+                    $("#final-message").text("Quiz complete! Your score: " + score + " / " + questions.length);
+
+                    console.log("Final Score:", score, "/", questions.length); // Final Score
+                }
+            }
+
+            // Initial display
+            displayQuestion();
+        });
+    </script>
+</body>
+</html>
